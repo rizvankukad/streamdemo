@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  audio#music(preload='true')
+  audio#music(controls)
     source(src='/streamaudio')
   #audioplayer
     button#pButton.play
