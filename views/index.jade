@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  audio#music(preload='true')
+    source(src='/streamaudio')
+  #audioplayer
+    button#pButton.play
+    |   
+    #timeline
+      #playhead
+
