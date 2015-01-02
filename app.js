@@ -27,13 +27,27 @@ app.use('/users', users);
 
 app.get('/streamaudio', function(req, res) {
 
+    //res.writeHead(200,{ 'Content-Type' : 'audio/mpeg'});
     var stats = fs.statSync("../music/test.mp3")
-    var fileSizeInBytes = stats["size"];
+ var fileSizeInBytes = stats["size"];
     var readableStream = fs.createReadStream("../music/test.mp3");
     res.status(200).set({ 'Content-Type' : 'audio/mpeg', 'content-length': fileSizeInBytes});
     readableStream.pipe(res);
 
     readableStream.on('data', function(chunk) {
+        //setTimeout(function(){ res.status(200).set({ 'Content-Type' : 'audio/mpeg'}).send(chunk); }, 2000);
+
+        /*res.sendFile(chunk, {}, function (err) {
+            if (err) {
+              console.log(err);
+              res.status(err.status).end();
+          }
+          else {
+              console.log('Sent:', chunk);
+          }
+      });*/
+        
+        //res.send(chunk);
         console.log(chunk);
     });
 
